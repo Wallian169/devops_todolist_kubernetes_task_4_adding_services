@@ -39,3 +39,11 @@ kubectl get svc -o wide
 ```bash 
 kubectl port-forward services/todoapp-service 8081:8080
 ```
+
+### How to access an app with NodePort service:
+
+1. Check the NodePort service details:
+```bash 
+minikube service todoapp-nodeport-service -n todoapp --url
+```
+2. Follow the provided link. DONE ✅
