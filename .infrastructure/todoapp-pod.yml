@@ -15,8 +15,18 @@ spec:
       - name: SECRET_KEY
         valueFrom:
           secretKeyRef:
-            name: my-secret
+            name: secrets
             key: SECRET_KEY
+      - name: DATABASE_URL
+        valueFrom:
+          secretKeyRef:
+            name: secrets
+            key: DATABASE_URL
+      - name: DEBUG
+        valueFrom:
+          secretKeyRef:
+            name: secrets
+            key: DEBUG
     livenessProbe:
       httpGet:
         path: api/health
@@ -36,7 +46,7 @@ metadata:
   name: todoapp-2
   namespace: todoapp
   labels:
-    app: todoapp
+    app: todolist
 spec:
   containers:
   - name: todoapp-2
@@ -47,8 +57,18 @@ spec:
       - name: SECRET_KEY
         valueFrom:
           secretKeyRef:
-            name: my-secret
+            name: secrets
             key: SECRET_KEY
+      - name: DATABASE_URL
+        valueFrom:
+          secretKeyRef:
+            name: secrets
+            key: DATABASE_URL
+      - name: DEBUG
+        valueFrom:
+          secretKeyRef:
+            name: secrets
+            key: DEBUG
     livenessProbe:
       httpGet:
         path: api/health

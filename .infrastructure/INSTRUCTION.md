@@ -3,7 +3,7 @@
 
 ### Prerequisites:
 - Make sure kubectl is runnoing on your local machine.
-- Apply namespace  `todoapp` from namespace.yml
+- Apply namespace  `todolist` from namespace.yml
 
 ```bash 
 kubectl apply -f .infrastructure/namespace.yml
@@ -11,7 +11,7 @@ kubectl apply -f .infrastructure/
 ```
 - set default namespace:
 ```bash
-kubectl config set-context --current --namespace=todoapp
+kubectl config set-context --current --namespace=todolist
 ```
 
 ### How to test an app by calling a ClusterIP service DNS from a busybox container
@@ -23,13 +23,13 @@ kubectl exec -it busybox -- sh
 2. Run curl command to access the cluster IP service:
 ```bash
 # for imdex page
-curl http://todoapp-service.todoapp.svc.cluster.local:8080/
+curl http://todolist-service.todolist.svc.cluster.local:8080/
 # API 
-curl http://todoapp-service.todoapp.svc.cluster.local:8080/api/
+curl http://todolist-service.todolist.svc.cluster.local:8080/api/
 ```
 ### How to test an app with port forwarding
 
-1. Ensure todoapp-service is running:
+1. Ensure todolist-service is running:
 
 ```bash
 kubectl get svc -o wide
@@ -37,13 +37,13 @@ kubectl get svc -o wide
 2. Forward ClusterIP to your local machine
 
 ```bash 
-kubectl port-forward services/todoapp-service 8081:8080
+kubectl port-forward services/todolist-service 8081:8080
 ```
 
 ### How to access an app with NodePort service:
 
 1. Check the NodePort service details:
 ```bash 
-minikube service todoapp-nodeport-service -n todoapp --url
+minikube service todolist-nodeport-service -n todolist --url
 ```
 2. Follow the provided link. DONE ✅
